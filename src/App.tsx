@@ -1,20 +1,21 @@
 import React from 'react'
 import './App.css'
-import { postData } from './utils/apiService'
+import { patchData } from './utils/apiService'
 
 function App() {
  
   async function test() {
     const formData =  {
-      title: 'nik',
+      title: 'tikit',
       description: 'lorem',
       subject: 'job',
       frequency: 'daily',
       repeatOption: 'daily',
       time: '22',
     }
-    postData('schedules', formData).then(() =>{ 
-      console.log("posting data") 
+    patchData('schedules/1', formData).then(() =>{ 
+   
+      console.log("patching data") 
     })
    
   }

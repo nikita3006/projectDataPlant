@@ -33,4 +33,21 @@ export const postData = async (endpoint: string, data: any) => {
       throw error;
     }
   };
-  
+  export const patchData = async (endpoint: string, data: any) => {
+    try {
+      const response = await fetch(`${apiUrl}/${endpoint}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        throw new Error(`Error calling API: ${response.statusText}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error calling API:', error);
+      throw error;
+    }
+  };
