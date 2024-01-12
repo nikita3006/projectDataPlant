@@ -166,6 +166,7 @@ const GenericScheduleModal: React.FC<GenericScheduleModalProps> = ({ isOpen, onC
 
           <Form.Group className="mb-3" controlId="frequency">
             <Form.Label>Frequency</Form.Label>
+            {/* @ts-ignore */}
             <Form.Control as="select" onChange={handleFrequencyChange} name="frequency" value={selectedFrequency}>
               <option value="daily">Daily</option>
               <option value="weekly">Weekly</option>

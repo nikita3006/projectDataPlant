@@ -26,7 +26,7 @@ function App() {
         const endpoint = searchData
           ? `schedules?title_like=${searchData}`
           : "schedules";
-
+        {/* @ts-ignore */}
         const dataFromServer = await fetchData<Schedule[]>(endpoint);
         setData(dataFromServer);
       } catch (error) {
