@@ -39,6 +39,8 @@ export const postData = async (endpoint: string, data: any) => {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://project-data-plant.vercel.app',
+          'Access-Control-Allow-Headers': '*'
         },
         body: JSON.stringify(data),
       });
