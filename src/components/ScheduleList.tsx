@@ -24,7 +24,7 @@ const ScheduleList: React.FC<ScheduleListProps> = ({ data, reload }) => {
   const handleDeleteItem = (id: string) => {
     const apiEndpoint = `schedules/${id}`;
     deleteData(apiEndpoint)
-    reload(id);
+    reload(Math.random().toFixed(3));
   };
 
   return (
