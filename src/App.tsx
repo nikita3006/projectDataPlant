@@ -3,6 +3,7 @@ import { fetchData } from "./utils/apiService";
 import ScheduleList from "./components/ScheduleList";
 import GenericScheduleModal from "./components/GenericScheduleModal";
 import { IoIosAddCircle } from 'react-icons/io';
+import { FaSearch } from 'react-icons/fa';
 
 
 function App() {
@@ -60,6 +61,24 @@ function App() {
             }}
           >
             <div>
+            <div
+              style={{
+                width: "250px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: "0.25rem",
+                boxShadow: "0 0 1px 1px",
+              }}
+            >
+              <input
+                type="search"
+                placeholder="Search"
+                style={{ border: "none", outline: "none" }}
+                
+              />
+              <FaSearch />
+            </div>
               <button onClick={handleShow}>
                 <IoIosAddCircle /> Add
               </button>
