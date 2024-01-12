@@ -1,12 +1,12 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import { MdDelete } from 'react-icons/md';
-
+import EditScheduleModal from './EditScheduleModal';
 import { deleteData } from '../utils/apiService';
 
 interface ScheduleListProps {
   data: Schedule[];
-  
+  reload: (value: string) => void;
 }
 
 interface Schedule {
@@ -19,18 +19,18 @@ interface Schedule {
   time: string;
 }
 
-const ScheduleList: React.FC<ScheduleListProps> = ({ data }) => {
+const ScheduleList: React.FC<ScheduleListProps> = ({ data, reload }) => {
 
   const handleDeleteItem = (id: string) => {
     const apiEndpoint = `schedules/${id}`;
     deleteData(apiEndpoint)
-    ;
+    reload(id);
   };
 
   return (
     <>
-      <Table striped bordered hover >
-        <thead style={{backgroundColor:"black", color:"white"}}>
+      <Table striped bordered hover>
+        <thead>
           <tr>
             <th>Title</th>
             <th>Description</th>
@@ -40,7 +40,7 @@ const ScheduleList: React.FC<ScheduleListProps> = ({ data }) => {
           </tr>
         </thead>
 
-        <tbody style={{color:"black"}}>
+        <tbody>
           {data.map((item, index) => (
             <tr key={index}>
               <td>{item.title}</td>
@@ -49,7 +49,10 @@ const ScheduleList: React.FC<ScheduleListProps> = ({ data }) => {
               <td>{item.frequency} at {item.time}</td>
               <td>
                 <button onClick={() => handleDeleteItem(item.id)}><MdDelete /></button>
-               <button>Edit</button>
+                <EditScheduleModal
+                  schedule={item}
+                  reload={reload}
+                />
               </td>
             </tr>
           ))}
