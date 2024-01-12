@@ -1,15 +1,6 @@
 {
   "schedules": [
     {
-      "title": "tikit",
-      "description": "lorem",
-      "subject": "job",
-      "frequency": "daily",
-      "repeatOption": "daily",
-      "time": "22",
-      "id": 1
-    },
-    {
       "title": "nik",
       "description": "lorem",
       "subject": "job",

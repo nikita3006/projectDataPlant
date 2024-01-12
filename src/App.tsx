@@ -1,19 +1,12 @@
 import React from 'react'
 import './App.css'
-import { patchData } from './utils/apiService'
+import { deleteData } from './utils/apiService'
 
 function App() {
  
   async function test() {
-    const formData =  {
-      title: 'tikit',
-      description: 'lorem',
-      subject: 'job',
-      frequency: 'daily',
-      repeatOption: 'daily',
-      time: '22',
-    }
-    patchData('schedules/1', formData).then(() =>{ 
+    
+    deleteData('schedules/1').then(() =>{ 
    
       console.log("patching data") 
     })
