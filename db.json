@@ -1,13 +1,3 @@
 {
-  "schedules": [
-    {
-      "title": "nikitA",
-      "description": "sdasd",
-      "subject": "sadas",
-      "frequency": "daily",
-      "repeatOption": "",
-      "time": "02:04",
-      "id": 16
-    }
-  ]
+  "schedules": []
 }

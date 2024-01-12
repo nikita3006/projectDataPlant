@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'https://json-server-nine-olive.vercel.app';
 
 export const fetchData = async (endpoint: string) => {
   try {
