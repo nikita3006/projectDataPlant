@@ -1,16 +1,22 @@
-
+import React from 'react'
 import './App.css'
-import { fetchData } from './utils/apiService'
+import { postData } from './utils/apiService'
 
 function App() {
  
   async function test() {
-    fetchData("schedules").then((result) =>{
-  
-      console.log(result)
-      
+    const formData =  {
+      title: 'nik',
+      description: 'lorem',
+      subject: 'job',
+      frequency: 'daily',
+      repeatOption: 'daily',
+      time: '22',
+    }
+    postData('schedules', formData).then(() =>{ 
+      console.log("posting data") 
     })
-    
+   
   }
     test()
   return (

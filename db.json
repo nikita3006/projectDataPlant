@@ -1,13 +1,94 @@
 {
-    "schedules": [
-      {
-        "title": "nikita",
-        "description": "ashdsaughdiusasd",
-        "subject": "Ss",
-        "frequency": "daily",
-        "repeatOption": "",
-        "time": "17:46",
-        "id": 1
-      }
-    ]
-  }
+  "schedules": [
+    {
+      "title": "nik",
+      "description": "lorem",
+      "subject": "job",
+      "frequency": "daily",
+      "repeatOption": "daily",
+      "time": "22",
+      "id": 1
+    },
+    {
+      "title": "nik",
+      "description": "lorem",
+      "subject": "job",
+      "frequency": "daily",
+      "repeatOption": "daily",
+      "time": "22",
+      "id": 2
+    },
+    {
+      "title": "nik",
+      "description": "lorem",
+      "subject": "job",
+      "frequency": "daily",
+      "repeatOption": "daily",
+      "time": "22",
+      "id": 3
+    },
+    {
+      "title": "nik",
+      "description": "lorem",
+      "subject": "job",
+      "frequency": "daily",
+      "repeatOption": "daily",
+      "time": "22",
+      "id": 4
+    },
+    {
+      "title": "nik",
+      "description": "lorem",
+      "subject": "job",
+      "frequency": "daily",
+      "repeatOption": "daily",
+      "time": "22",
+      "id": 5
+    },
+    {
+      "title": "nik",
+      "description": "lorem",
+      "subject": "job",
+      "frequency": "daily",
+      "repeatOption": "daily",
+      "time": "22",
+      "id": 6
+    },
+    {
+      "title": "nik",
+      "description": "lorem",
+      "subject": "job",
+      "frequency": "daily",
+      "repeatOption": "daily",
+      "time": "22",
+      "id": 7
+    },
+    {
+      "title": "nik",
+      "description": "lorem",
+      "subject": "job",
+      "frequency": "daily",
+      "repeatOption": "daily",
+      "time": "22",
+      "id": 8
+    },
+    {
+      "title": "nik",
+      "description": "lorem",
+      "subject": "job",
+      "frequency": "daily",
+      "repeatOption": "daily",
+      "time": "22",
+      "id": 9
+    },
+    {
+      "title": "nik",
+      "description": "lorem",
+      "subject": "job",
+      "frequency": "daily",
+      "repeatOption": "daily",
+      "time": "22",
+      "id": 10
+    }
+  ]
+}
