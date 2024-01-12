@@ -9,6 +9,7 @@ import { FaSearch } from 'react-icons/fa';
 function App() {
   const [data, setData] = useState<Schedule[]>([]);
   const [show, setShow] = useState(false);
+  const [searchInput, setSearchInput] = useState<string>('');
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
@@ -21,11 +22,13 @@ function App() {
     repeatOption: string;
     time: string;
   }
-
   useEffect(() => {
     const fetchDataFromApi = async () => {
       try {
-        const endpoint = "schedules";
+        const searchData = searchInput.trim();
+        const endpoint = searchData
+          ? `schedules?title_like=${searchData}`
+          : "schedules";
 
         const dataFromServer = await fetchData<Schedule[]>(endpoint);
         setData(dataFromServer);
@@ -35,7 +38,11 @@ function App() {
     };
 
     fetchDataFromApi();
-  }, []);
+  }, [searchInput]);
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
+  };
 
   return (
     <>
@@ -75,7 +82,7 @@ function App() {
                 type="search"
                 placeholder="Search"
                 style={{ border: "none", outline: "none" }}
-                
+                 onChange={handleSearchChange}
               />
               <FaSearch />
             </div>
