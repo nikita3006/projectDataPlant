@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { postData } from '../utils/apiService';
+import { postData, patchData } from '../utils/apiService';
 
 interface GenericScheduleModalProps {
   isOpen: boolean;
   onClose: () => void;
+  schedule: Schedule | null;
+  reload: (value: string) => void;
 }
+
+interface Schedule {
+  id: string;
+  title: string;
+  description: string;
+  subject: string;
+  frequency: string;
+  repeatOption: string;
+  time: string;
+}
+
 interface FormData {
   title: string;
   description: string;
@@ -17,7 +30,7 @@ interface FormData {
   time: string;
 }
 
-const GenericScheduleModal: React.FC<GenericScheduleModalProps> = ({ isOpen, onClose}) => {
+const GenericScheduleModal: React.FC<GenericScheduleModalProps> = ({ isOpen, onClose, schedule, reload }) => {
   const [formData, setFormData] = useState<FormData>({
     title: '',
     description: '',
@@ -43,6 +56,22 @@ const GenericScheduleModal: React.FC<GenericScheduleModalProps> = ({ isOpen, onC
     setSelectedFrequency('daily');
     setSelectedDay('');
   };
+
+  useEffect(() => {
+    if (schedule) {
+      setFormData({
+        title: schedule.title || '',
+        description: schedule.description || '',
+        subject: schedule.subject || '',
+        frequency: schedule.frequency || 'daily',
+        repeatOption: schedule.repeatOption || '',
+        time: schedule.time || '',
+      });
+
+      setSelectedFrequency(schedule.frequency || 'daily');
+      setSelectedDay(schedule.repeatOption || '');
+    }
+  }, [schedule]);
 
   const handleDayChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedDay(event.target.value);
@@ -95,17 +124,28 @@ const GenericScheduleModal: React.FC<GenericScheduleModalProps> = ({ isOpen, onC
   const handleCreate = async () => {
     try {
       await postData('schedules', formData);
-      resetForm()
+      reload(Math.random().toFixed(3));
+      resetForm();
       onClose();
     } catch (error) {
       console.error('Error creating data:', error);
     }
   };
 
+  const handleUpdate = async () => {
+    try {
+      await patchData(`schedules/${schedule!.id}`, formData);
+      reload(Math.random().toFixed(3));
+      onClose();
+    } catch (error) {
+      console.error('Error updating data:', error);
+    }
+  };
+
   return (
     <Modal show={isOpen} onHide={onClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Add Schedule</Modal.Title>
+        <Modal.Title>{schedule ? 'Edit' : 'Add'} Schedule</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -145,8 +185,8 @@ const GenericScheduleModal: React.FC<GenericScheduleModalProps> = ({ isOpen, onC
         <Button variant="secondary" onClick={onClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={handleCreate}>
-        Save
+        <Button variant="primary" onClick={schedule ? handleUpdate : handleCreate}>
+          {schedule ? 'Update' : 'Save'}
         </Button>
       </Modal.Footer>
     </Modal>

@@ -1,13 +1,13 @@
 {
   "schedules": [
     {
-      "title": "asd",
-      "description": "asdad",
-      "subject": "asd",
+      "title": "nikitA",
+      "description": "sdasd",
+      "subject": "sadas",
       "frequency": "daily",
       "repeatOption": "",
-      "time": "21:33",
-      "id": 15
+      "time": "02:04",
+      "id": 16
     }
   ]
 }

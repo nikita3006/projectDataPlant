@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { fetchData } from "./utils/apiService";
-import ScheduleList from "./components/ScheduleList";
-import GenericScheduleModal from "./components/GenericScheduleModal";
-import { IoIosAddCircle } from 'react-icons/io';
+import React, { useState, useEffect } from 'react';
+import { fetchData } from './utils/apiService';
 import { FaSearch } from 'react-icons/fa';
-
+import ScheduleList from './components/ScheduleList';
+import AddScheduleModal from './components/AddScheduleModal';
 
 function App() {
   const [data, setData] = useState<Schedule[]>([]);
-  const [show, setShow] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
+  const [performReload, setPerformReload] = useState<string>('');
 
   interface Schedule {
     id: string;
@@ -22,6 +18,7 @@ function App() {
     repeatOption: string;
     time: string;
   }
+
   useEffect(() => {
     const fetchDataFromApi = async () => {
       try {
@@ -38,7 +35,11 @@ function App() {
     };
 
     fetchDataFromApi();
-  }, [searchInput]);
+  }, [searchInput, performReload]);
+
+  const reload = (value: string) => {
+    setPerformReload(value);
+  };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value);
@@ -46,28 +47,11 @@ function App() {
 
   return (
     <>
-      <div
-        style={{ width: "auto", height: "3rem", backgroundColor: "grey" }}
-      ></div>
+      <div style={{ width: "auto", height: "3rem", backgroundColor: "grey" }}></div>
       <div style={{ display: "flex" }}>
-        <div
-          style={{ backgroundColor: "purple", height: "100vh", width: "4rem" }}
-        ></div>
-        <div
-          style={{
-            backgroundColor: "white",
-            width: "100vw",
-            padding: "0.75rem",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              margin: "2rem",
-            }}
-          >
-            <div>
+        <div style={{ backgroundColor: "purple", height: "100vh", width: "4rem" }}></div>
+        <div style={{ backgroundColor: "white", width: "100vw", padding: "0.75rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", margin: "2rem" }}>
             <div
               style={{
                 width: "250px",
@@ -82,17 +66,17 @@ function App() {
                 type="search"
                 placeholder="Search"
                 style={{ border: "none", outline: "none" }}
-                 onChange={handleSearchChange}
+                onChange={handleSearchChange}
               />
               <FaSearch />
             </div>
-              <button onClick={handleShow}>
-                <IoIosAddCircle /> Add
-              </button>
-              <GenericScheduleModal isOpen={show} onClose={handleClose} />
+            <div>
+              <AddScheduleModal
+                reload={reload}
+              />
             </div>
           </div>
-          <ScheduleList data={data} />
+          <ScheduleList data={data} reload={reload} />
         </div>
       </div>
     </>
