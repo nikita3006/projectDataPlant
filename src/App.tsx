@@ -28,7 +28,7 @@ function App() {
           : "schedules";
         {/* @ts-ignore */}
         const dataFromServer = await fetchData<Schedule[]>(endpoint);
-        setData(dataFromServer);
+                setData(dataFromServer);
       } catch (error) {
         console.error("Error fetching data from API:", error);
       }
@@ -38,7 +38,7 @@ function App() {
   }, [searchInput, performReload]);
 
   const reload = (value: string) => {
-    setPerformReload(value);
+        setPerformReload(value);
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {

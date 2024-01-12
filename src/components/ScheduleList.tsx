@@ -21,9 +21,9 @@ interface Schedule {
 
 const ScheduleList: React.FC<ScheduleListProps> = ({ data, reload }) => {
 
-  const handleDeleteItem = (id: string) => {
+  const handleDeleteItem = async (id: string) => {
     const apiEndpoint = `schedules/${id}`;
-    deleteData(apiEndpoint)
+    await deleteData(apiEndpoint)
     reload(Math.random().toFixed(3));
   };
 

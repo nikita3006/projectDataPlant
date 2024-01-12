@@ -64,7 +64,6 @@ export const postData = async (endpoint: string, data: any) => {
       if (!response.ok) {
         throw new Error(`Error calling API: ${response.statusText}`);
       }
-      return await response.json();
     } catch (error) {
       console.error('Error calling API:', error);
       throw error;
