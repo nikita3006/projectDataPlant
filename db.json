@@ -7,15 +7,6 @@
       "frequency": "daily",
       "repeatOption": "daily",
       "time": "22",
-      "id": 9
-    },
-    {
-      "title": "nik",
-      "description": "lorem",
-      "subject": "job",
-      "frequency": "daily",
-      "repeatOption": "daily",
-      "time": "22",
       "id": 10
     },
     {
@@ -53,6 +44,15 @@
       "repeatOption": "daily",
       "time": "22",
       "id": 14
+    },
+    {
+      "title": "asd",
+      "description": "asdad",
+      "subject": "asd",
+      "frequency": "daily",
+      "repeatOption": "",
+      "time": "21:33",
+      "id": 15
     }
   ]
 }
