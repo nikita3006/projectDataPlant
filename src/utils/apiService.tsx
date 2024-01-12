@@ -36,7 +36,7 @@ export const postData = async (endpoint: string, data: any) => {
   export const patchData = async (endpoint: string, data: any) => {
     try {
       const response = await fetch(`${apiUrl}/${endpoint}`, {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': 'https://project-data-plant.vercel.app',
